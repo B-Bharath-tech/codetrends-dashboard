@@ -12,113 +12,253 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Advanced CSS with modern design
+# Modern CSS with background simulation and clean design
 st.markdown("""
 <style>
+    /* Main background with gradient animation */
+    .stApp {
+        background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+        background-size: 400% 400%;
+        animation: gradient 15s ease infinite;
+        padding: 1rem;
+    }
+    
+    @keyframes gradient {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+
+    /* Main content container */
+    .main-block {
+        background: rgba(255, 255, 255, 0.92);
+        backdrop-filter: blur(20px);
+        border-radius: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        margin: 0 auto;
+        padding: 3rem;
+        max-width: 1400px;
+    }
+
     .main-header {
-        font-size: 4rem !important;
+        font-size: 3.5rem !important;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;
         margin-bottom: 0.5rem;
         font-weight: 800;
+        text-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
+
     .sub-header {
         text-align: center;
         color: #6c757d !important;
         margin-bottom: 3rem;
-        font-size: 1.4rem;
+        font-size: 1.3rem;
         font-weight: 500;
     }
+
+    /* Enhanced metric cards */
     .metric-card {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%);
         padding: 1.5rem;
-        border-radius: 15px;
-        color: white;
+        border-radius: 20px;
+        color: #2c3e50;
         text-align: center;
         margin: 0.5rem;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        border: 1px solid rgba(255,255,255,0.4);
+        backdrop-filter: blur(15px);
+        transition: all 0.3s ease;
     }
+
+    .metric-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+    }
+
     .metric-value {
-        font-size: 2.5rem !important;
+        font-size: 2.2rem !important;
         font-weight: 700 !important;
         margin: 0.5rem 0 !important;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
     }
+
     .metric-label {
-        font-size: 1rem !important;
-        opacity: 0.9;
+        font-size: 0.9rem !important;
+        color: #6c757d !important;
         margin-bottom: 0.5rem !important;
+        font-weight: 600;
     }
-    .trend-card {
-        background: white;
-        padding: 2rem;
-        border-radius: 15px;
-        margin: 1rem 0;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        border: 1px solid #e9ecef;
+
+    /* Clean section styling */
+    .section-header {
+        color: #2c3e50;
+        font-weight: 700;
+        margin: 2.5rem 0 1.5rem 0;
+        font-size: 1.8rem;
+        position: relative;
+        padding-bottom: 0.8rem;
     }
-    .filter-section {
-        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-        padding: 2rem;
-        border-radius: 15px;
-        margin: 2rem 0;
-        color: white;
+
+    .section-header::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 60px;
+        height: 4px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 2px;
     }
-    .insight-card {
-        background: white;
+
+    /* Clean filter area */
+    .filter-area {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(15px);
         padding: 1.5rem;
-        border-radius: 12px;
-        margin: 1rem 0;
-        border-left: 5px solid #667eea;
-        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        border-radius: 16px;
+        margin: 1.5rem 0;
+        border: 1px solid rgba(255,255,255,0.4);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
     }
+
+    /* Clean cards */
+    .content-card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(15px);
+        border-radius: 16px;
+        border: 1px solid rgba(255,255,255,0.3);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        padding: 1.5rem;
+        margin: 1rem 0;
+    }
+
+    .insight-card {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(15px);
+        border-radius: 12px;
+        border-left: 4px solid #667eea;
+        padding: 1.2rem;
+        margin: 0.8rem 0;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        transition: all 0.3s ease;
+    }
+
+    .insight-card:hover {
+        transform: translateX(5px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    /* Tech ecosystem styling */
+    .tech-section {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(15px);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border: 1px solid rgba(255,255,255,0.3);
+        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+
     .tech-badge {
         display: inline-block;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
-        padding: 0.5rem 1rem;
+        padding: 0.6rem 1.2rem;
         border-radius: 20px;
-        margin: 0.3rem;
-        font-size: 0.9rem;
+        margin: 0.4rem;
+        font-size: 0.85rem;
         font-weight: 600;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+        transition: all 0.3s ease;
     }
-    .growth-positive {
-        color: #28a745;
-        font-weight: 600;
+
+    .tech-badge:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
     }
-    .growth-negative {
-        color: #dc3545;
-        font-weight: 600;
-    }
-    .section-title {
-        color: #2c3e50;
-        font-weight: 700;
-        margin: 2rem 0 1rem 0;
-        font-size: 1.8rem;
-        border-bottom: 3px solid #667eea;
-        padding-bottom: 0.5rem;
-    }
-    .stPlotlyChart {
-        border-radius: 15px;
-    }
-    .recommendation-text {
-        color: #2c3e50;
-        font-weight: 600;
-        margin: 0.5rem 0;
-    }
-    .tech-table {
-        background: white;
-        border-radius: 15px;
-        padding: 1.5rem;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        margin: 1rem 0;
-    }
+
     .tech-category {
         color: #667eea;
         font-weight: 700;
         margin-bottom: 1rem;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        position: relative;
+        padding-left: 0.8rem;
+    }
+
+    .tech-category::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 3px;
+        height: 16px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 2px;
+    }
+
+    /* Chart styling */
+    .stPlotlyChart {
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(10px);
+        padding: 1rem;
+        border: 1px solid rgba(255,255,255,0.3);
+    }
+
+    /* Recommendation styling */
+    .recommendation-text {
+        color: #2c3e50;
+        font-weight: 600;
+        margin: 0.5rem 0;
+        line-height: 1.6;
+        font-size: 0.95rem;
+    }
+
+    /* Clean footer */
+    .clean-footer {
+        text-align: center;
+        color: rgba(108, 117, 125, 0.8);
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid rgba(255,255,255,0.3);
+        font-size: 0.9rem;
+    }
+
+    /* Remove Streamlit default styling */
+    .stButton > button {
+        border-radius: 12px !important;
+        border: 1px solid rgba(255,255,255,0.3) !important;
+        background: rgba(255,255,255,0.9) !important;
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    .stButton > button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: rgba(255,255,255,0.1);
+        border-radius: 10px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        border-radius: 10px;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -221,7 +361,9 @@ def create_radar_chart(trends_data, languages):
             )),
         showlegend=True,
         title="Language Capabilities Radar Chart",
-        height=400
+        height=400,
+        paper_bgcolor='rgba(0,0,0,0)',
+        plot_bgcolor='rgba(0,0,0,0)'
     )
     
     return fig
@@ -230,16 +372,16 @@ def create_radar_chart(trends_data, languages):
 current_year = datetime.now().year
 start_year = 2018
 
+st.markdown('<div class="main-block">', unsafe_allow_html=True)
+
 st.markdown('<h1 class="main-header">🚀 CodeTrends Analytics Pro</h1>', unsafe_allow_html=True)
 st.markdown(f'<p class="sub-header">Advanced Programming Language Intelligence & Market Insights {start_year}-{current_year}</p>', unsafe_allow_html=True)
 
 # Load advanced data
 years_data, metrics_data, trends_data = get_advanced_trends()
-df_years = pd.DataFrame(years_data)
-df_metrics = pd.DataFrame(metrics_data)
 
 # Top Metrics Row
-st.markdown("## 📈 Executive Summary")
+st.markdown('<div class="section-header">📈 Executive Summary</div>', unsafe_allow_html=True)
 
 metric_cols = st.columns(4)
 
@@ -278,15 +420,8 @@ with metric_cols[2]:
     """, unsafe_allow_html=True)
 
 with metric_cols[3]:
-    # Find most popular language among selected or all
-    if 'selected_languages' in locals() and selected_languages:
-        popular_lang = max(selected_languages, 
-                          key=lambda x: years_data[str(current_year)][years_data["Language"].index(x)])
-        popular_score = years_data[str(current_year)][years_data["Language"].index(popular_lang)]
-    else:
-        popular_lang = current_leader
-        popular_score = leader_score
-        
+    popular_lang = current_leader
+    popular_score = leader_score
     st.markdown(f"""
     <div class="metric-card">
         <div class="metric-label">⭐ Most Popular</div>
@@ -296,8 +431,9 @@ with metric_cols[3]:
     """, unsafe_allow_html=True)
 
 # Interactive Filters
-st.markdown("## 🎛️ Data Controls")
+st.markdown('<div class="section-header">🎛️ Data Controls</div>', unsafe_allow_html=True)
 
+st.markdown('<div class="filter-area">', unsafe_allow_html=True)
 filter_col1, filter_col2, filter_col3 = st.columns(3)
 
 with filter_col1:
@@ -324,9 +460,10 @@ with filter_col3:
         ["Bar Chart", "Line Chart", "Area Chart", "Heatmap"],
         key="chart_type"
     )
+st.markdown('</div>', unsafe_allow_html=True)
 
 # Main Visualization
-st.markdown("## 📊 Language Popularity Trends")
+st.markdown('<div class="section-header">📊 Language Popularity Trends</div>', unsafe_allow_html=True)
 
 if not selected_languages or not selected_years:
     st.warning("⚠️ Please select at least one language and year")
@@ -391,7 +528,7 @@ else:
     st.plotly_chart(fig, use_container_width=True)
 
 # Advanced Analytics Section
-st.markdown("## 🔬 Advanced Analytics")
+st.markdown('<div class="section-header">🔬 Advanced Analytics</div>', unsafe_allow_html=True)
 
 analytics_col1, analytics_col2 = st.columns(2)
 
@@ -420,20 +557,20 @@ with analytics_col1:
             color="Growth %",
             color_continuous_scale="RdYlGn"
         )
-        fig_growth.update_layout(height=400)
+        fig_growth.update_layout(height=400, paper_bgcolor='rgba(0,0,0,0)', plot_bgcolor='rgba(0,0,0,0)')
         st.plotly_chart(fig_growth, use_container_width=True)
 
 with analytics_col2:
     st.markdown("### 🎯 Language Comparison")
     
     if len(selected_languages) >= 2:
-        radar_fig = create_radar_chart(trends_data, selected_languages[:4])  # Limit to 4 for clarity
+        radar_fig = create_radar_chart(trends_data, selected_languages[:4])
         st.plotly_chart(radar_fig, use_container_width=True)
     else:
         st.info("Select at least 2 languages for comparison")
 
 # Market Insights
-st.markdown("## 💡 Market Insights & Recommendations")
+st.markdown('<div class="section-header">💡 Market Insights & Recommendations</div>', unsafe_allow_html=True)
 
 insights_col1, insights_col2 = st.columns(2)
 
@@ -474,14 +611,12 @@ with insights_col2:
     ]
     
     for rec in recommendations:
-        st.markdown(f"<div style='margin: 0.5rem 0; padding: 1rem; background: #f8f9fa; border-radius: 8px;'>{rec}</div>", unsafe_allow_html=True)
+        st.markdown(f"<div class='content-card'>{rec}</div>", unsafe_allow_html=True)
 
 # Technology Stack Overview
-st.markdown("## 🛠️ Technology Ecosystem")
+st.markdown('<div class="section-header">🛠️ Technology Ecosystem</div>', unsafe_allow_html=True)
 
-# Create a structured table-like layout for technology ecosystem
-st.markdown('<div class="tech-table">', unsafe_allow_html=True)
-
+st.markdown('<div class="tech-section">', unsafe_allow_html=True)
 tech_cols = st.columns(4)
 categories = {
     "🌐 Web Development": ["JavaScript", "TypeScript", "Python", "PHP"],
@@ -495,17 +630,18 @@ for col, (category, langs) in zip(tech_cols, categories.items()):
         st.markdown(f"<div class='tech-category'>{category}</div>", unsafe_allow_html=True)
         for lang in langs:
             if lang in years_data["Language"]:
-                # Remove the numbers - just show language names
                 st.markdown(f'<div class="tech-badge">{lang}</div>', unsafe_allow_html=True)
             else:
                 st.markdown(f'<div class="tech-badge" style="background: #6c757d;">{lang}</div>', unsafe_allow_html=True)
 
 st.markdown('</div>', unsafe_allow_html=True)
 
-# Footer - Clean and simple without the white box
+# Clean footer
+st.markdown('</div>', unsafe_allow_html=True)  # Close main-block
+
 st.markdown(
-    f"<p style='text-align: center; color: #6c757d; margin-top: 2rem;'>"
+    f"<div class='clean-footer'>"
     f"🚀 Advanced Language Analytics • {start_year}-{current_year} Trends"
-    f"</p>",
+    f"</div>",
     unsafe_allow_html=True
 )
