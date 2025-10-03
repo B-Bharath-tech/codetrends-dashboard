@@ -12,80 +12,72 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-# Modern CSS with background simulation and clean design
+# Data Science Themed CSS with Professional Background
 st.markdown("""
 <style>
-    /* Main background with gradient animation */
+    /* Professional Data Science Background */
     .stApp {
-        background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
-        background-size: 400% 400%;
-        animation: gradient 15s ease infinite;
-        padding: 1rem;
-    }
-    
-    @keyframes gradient {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
+        background: 
+            radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.1) 0%, transparent 50%),
+            linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        background-attachment: fixed;
     }
 
-    /* Main content container */
-    .main-block {
-        background: rgba(255, 255, 255, 0.92);
-        backdrop-filter: blur(20px);
-        border-radius: 24px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        margin: 0 auto;
-        padding: 3rem;
+    /* Main content container with clean white background */
+    .main-container {
+        background: rgba(255, 255, 255, 0.98);
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        margin: 1rem auto;
+        padding: 2.5rem;
         max-width: 1400px;
+        border: 1px solid #e9ecef;
     }
 
+    /* Header with data science gradient */
     .main-header {
-        font-size: 3.5rem !important;
+        font-size: 3.2rem !important;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-align: center;
         margin-bottom: 0.5rem;
         font-weight: 800;
-        text-shadow: 0 4px 8px rgba(0,0,0,0.1);
     }
 
     .sub-header {
         text-align: center;
         color: #6c757d !important;
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem;
         font-size: 1.3rem;
         font-weight: 500;
     }
 
-    /* Enhanced metric cards */
+    /* Clean metric cards */
     .metric-card {
-        background: linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.8) 100%);
+        background: white;
         padding: 1.5rem;
-        border-radius: 20px;
-        color: #2c3e50;
+        border-radius: 12px;
         text-align: center;
         margin: 0.5rem;
-        box-shadow: 0 8px 32px rgba(0,0,0,0.1);
-        border: 1px solid rgba(255,255,255,0.4);
-        backdrop-filter: blur(15px);
+        box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        border: 1px solid #e9ecef;
         transition: all 0.3s ease;
     }
 
     .metric-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+        border-color: #667eea;
     }
 
     .metric-value {
         font-size: 2.2rem !important;
         font-weight: 700 !important;
         margin: 0.5rem 0 !important;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        color: #2c3e50;
     }
 
     .metric-label {
@@ -95,170 +87,109 @@ st.markdown("""
         font-weight: 600;
     }
 
-    /* Clean section styling */
+    /* Clean section headers */
     .section-header {
         color: #2c3e50;
         font-weight: 700;
-        margin: 2.5rem 0 1.5rem 0;
-        font-size: 1.8rem;
-        position: relative;
-        padding-bottom: 0.8rem;
+        margin: 2rem 0 1rem 0;
+        font-size: 1.6rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #667eea;
     }
 
-    .section-header::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 60px;
-        height: 4px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 2px;
-    }
-
-    /* Clean filter area */
+    /* Filter area */
     .filter-area {
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(15px);
+        background: white;
         padding: 1.5rem;
-        border-radius: 16px;
+        border-radius: 10px;
         margin: 1.5rem 0;
-        border: 1px solid rgba(255,255,255,0.4);
-        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        border: 1px solid #e9ecef;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
 
-    /* Clean cards */
+    /* Content cards */
     .content-card {
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(15px);
-        border-radius: 16px;
-        border: 1px solid rgba(255,255,255,0.3);
-        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        background: white;
+        border-radius: 10px;
+        border: 1px solid #e9ecef;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         padding: 1.5rem;
         margin: 1rem 0;
     }
 
     .insight-card {
-        background: rgba(255, 255, 255, 0.95);
-        backdrop-filter: blur(15px);
-        border-radius: 12px;
+        background: white;
+        border-radius: 8px;
         border-left: 4px solid #667eea;
         padding: 1.2rem;
         margin: 0.8rem 0;
-        box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+        box-shadow: 0 2px 6px rgba(0,0,0,0.04);
         transition: all 0.3s ease;
     }
 
     .insight-card:hover {
-        transform: translateX(5px);
-        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        transform: translateX(3px);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
-    /* Tech ecosystem styling */
+    /* Tech ecosystem */
     .tech-section {
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(15px);
-        border-radius: 16px;
+        background: white;
+        border-radius: 10px;
         padding: 1.5rem;
         margin: 1.5rem 0;
-        border: 1px solid rgba(255,255,255,0.3);
-        box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+        border: 1px solid #e9ecef;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.06);
     }
 
     .tech-badge {
         display: inline-block;
         background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         color: white;
-        padding: 0.6rem 1.2rem;
-        border-radius: 20px;
-        margin: 0.4rem;
+        padding: 0.5rem 1rem;
+        border-radius: 16px;
+        margin: 0.3rem;
         font-size: 0.85rem;
         font-weight: 600;
-        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
-        transition: all 0.3s ease;
-    }
-
-    .tech-badge:hover {
-        transform: scale(1.05);
-        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
     }
 
     .tech-category {
-        color: #667eea;
+        color: #2c3e50;
         font-weight: 700;
         margin-bottom: 1rem;
         font-size: 1.1rem;
-        position: relative;
-        padding-left: 0.8rem;
-    }
-
-    .tech-category::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 3px;
-        height: 16px;
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 2px;
     }
 
     /* Chart styling */
     .stPlotlyChart {
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(10px);
+        border-radius: 8px;
+        background: white;
         padding: 1rem;
-        border: 1px solid rgba(255,255,255,0.3);
-    }
-
-    /* Recommendation styling */
-    .recommendation-text {
-        color: #2c3e50;
-        font-weight: 600;
-        margin: 0.5rem 0;
-        line-height: 1.6;
-        font-size: 0.95rem;
     }
 
     /* Clean footer */
     .clean-footer {
         text-align: center;
-        color: rgba(108, 117, 125, 0.8);
-        margin-top: 3rem;
-        padding-top: 2rem;
-        border-top: 1px solid rgba(255,255,255,0.3);
+        color: #6c757d;
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid #e9ecef;
         font-size: 0.9rem;
     }
 
-    /* Remove Streamlit default styling */
-    .stButton > button {
-        border-radius: 12px !important;
-        border: 1px solid rgba(255,255,255,0.3) !important;
-        background: rgba(255,255,255,0.9) !important;
-        backdrop-filter: blur(10px);
-        transition: all 0.3s ease;
+    /* Remove any Streamlit default containers */
+    .block-container {
+        padding: 0 !important;
     }
-
-    .stButton > button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    
+    /* Ensure text readability */
+    .stMarkdown, .stHeader, .stSubheader {
+        color: #2c3e50 !important;
     }
-
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-        width: 6px;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: rgba(255,255,255,0.1);
-        border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        border-radius: 10px;
+    
+    /* Make sure all text is visible */
+    p, div, span, h1, h2, h3, h4, h5, h6 {
+        color: #2c3e50 !important;
     }
 </style>
 """, unsafe_allow_html=True)
@@ -372,7 +303,7 @@ def create_radar_chart(trends_data, languages):
 current_year = datetime.now().year
 start_year = 2018
 
-st.markdown('<div class="main-block">', unsafe_allow_html=True)
+st.markdown('<div class="main-container">', unsafe_allow_html=True)
 
 st.markdown('<h1 class="main-header">🚀 CodeTrends Analytics Pro</h1>', unsafe_allow_html=True)
 st.markdown(f'<p class="sub-header">Advanced Programming Language Intelligence & Market Insights {start_year}-{current_year}</p>', unsafe_allow_html=True)
@@ -575,7 +506,7 @@ st.markdown('<div class="section-header">💡 Market Insights & Recommendations<
 insights_col1, insights_col2 = st.columns(2)
 
 with insights_col1:
-    st.markdown("### <span style='color:#667eea;'>🏆 Top Performers</span>", unsafe_allow_html=True)
+    st.markdown("### 🏆 Top Performers")
     
     performance_data = []
     for i, lang in enumerate(years_data["Language"]):
@@ -592,22 +523,22 @@ with insights_col1:
         lang_idx = years_data["Language"].index(lang)
         st.markdown(f"""
         <div class="insight-card">
-            <strong style='color:#2c3e50;'>{lang}</strong> - <span style='color:#667eea; font-weight:600;'>Overall Score: {score:.1f}</span>
-            <br><small style='color:#6c757d;'>Popularity: {years_data[str(current_year)][lang_idx]} | 
+            <strong>{lang}</strong> - <span style="color:#667eea; font-weight:600;">Overall Score: {score:.1f}</span>
+            <br><small style="color:#6c757d;">Popularity: {years_data[str(current_year)][lang_idx]} | 
             Demand: {metrics_data['demand'][lang_idx]}% | 
             Growth: +{metrics_data['growth'][lang_idx]:.1f}%</small>
         </div>
         """, unsafe_allow_html=True)
 
 with insights_col2:
-    st.markdown("### <span style='color:#667eea;'>📋 Quick Recommendations</span>", unsafe_allow_html=True)
+    st.markdown("### 📋 Quick Recommendations")
     
     recommendations = [
-        "<span class='recommendation-text'>🚀 For Beginners: Start with Python or JavaScript for wide applicability</span>",
-        "<span class='recommendation-text'>💼 For Job Seekers: Focus on TypeScript and Go for high growth opportunities</span>", 
-        "<span class='recommendation-text'>⚡ For Performance: Consider Rust or C++ for system-level programming</span>",
-        "<span class='recommendation-text'>📱 For Mobile: Kotlin for Android, Swift for iOS development</span>",
-        "<span class='recommendation-text'>🔮 Future Proof: Invest in Rust and Go for emerging trends</span>"
+        "🚀 **For Beginners:** Start with Python or JavaScript for wide applicability",
+        "💼 **For Job Seekers:** Focus on TypeScript and Go for high growth opportunities", 
+        "⚡ **For Performance:** Consider Rust or C++ for system-level programming",
+        "📱 **For Mobile:** Kotlin for Android, Swift for iOS development",
+        "🔮 **Future Proof:** Invest in Rust and Go for emerging trends"
     ]
     
     for rec in recommendations:
@@ -637,7 +568,7 @@ for col, (category, langs) in zip(tech_cols, categories.items()):
 st.markdown('</div>', unsafe_allow_html=True)
 
 # Clean footer
-st.markdown('</div>', unsafe_allow_html=True)  # Close main-block
+st.markdown('</div>', unsafe_allow_html=True)  # Close main-container
 
 st.markdown(
     f"<div class='clean-footer'>"
